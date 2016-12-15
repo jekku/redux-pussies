@@ -1,27 +1,30 @@
 'use strict';
 
 import { default as pussyList } from 'stores/pussyList';
-import { addPussy, clearPussies } from 'actions/pussyListActions';
+import { addPussy, clearPussies, deletePussy } from 'actions/pussyListActions';
 import { expect } from 'chai';
 
 describe('Pussy List', () => {
+  beforeEach(() => {
+    pussyList.dispatch(addPussy('Fluffykins'));
+    pussyList.dispatch(addPussy('Karo'));
+  });
+
   afterEach(() => {
     pussyList.dispatch(clearPussies());
   });
 
   it('Should be able to add a new pussy with UUID', (done) => {
-    pussyList.dispatch(addPussy('Fluffykins'));
-    const nextState = pussyList.getState();
+    pussyList.dispatch(addPussy('Jekri'));
 
-    expect(nextState[0].name).to.equal('Fluffykins');
-    expect(nextState[0].id).to.exist;
+    const currentState = pussyList.getState();
+    expect(currentState[currentState.length - 1].name).to.equal('Jekri');
+    expect(currentState[currentState.length - 1].id).to.exist;
 
     done();
   });
 
   it('Should be able to delete all pussies', (done) => {
-    pussyList.dispatch(addPussy('Karo'));
-    pussyList.dispatch(addPussy('Jekri'));
     pussyList.dispatch(clearPussies());
 
     expect(pussyList.getState().length).to.equal(0);
@@ -29,5 +32,17 @@ describe('Pussy List', () => {
     done();
   });
 
-  it('Should be able to delete a pussy from the list by UUID');
+  it('Should be able to delete a pussy from the list by UUID', (done) => {
+    const currentState = pussyList.getState();
+    const pussyToDelete = currentState[0].id;
+
+    pussyList.dispatch(deletePussy(pussyToDelete));
+
+    const nextState = pussyList.getState();
+    const stillHasPussy = !!nextState.find(p => p === pussyToDelete);
+
+    expect(stillHasPussy).to.be.false;
+
+    done();
+  });
 });
