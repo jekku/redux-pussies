@@ -10,19 +10,18 @@ describe('Pussy List', () => {
   });
 
   it('Should be able to add a new pussy with UUID', (done) => {
-    pussyList.dispatch(addPussy('Fluffykins', 'Munchkin'));
+    pussyList.dispatch(addPussy('Fluffykins'));
     const nextState = pussyList.getState();
 
     expect(nextState[0].name).to.equal('Fluffykins');
-    expect(nextState[0].specie).to.equal('Munchkin');
     expect(nextState[0].id).to.exist;
 
     done();
   });
 
   it('Should be able to delete all pussies', (done) => {
-    pussyList.dispatch(addPussy('Karo', 'Tabby'));
-    pussyList.dispatch(addPussy('Jekri', 'Siamese'));
+    pussyList.dispatch(addPussy('Karo'));
+    pussyList.dispatch(addPussy('Jekri'));
     pussyList.dispatch(clearPussies());
 
     expect(pussyList.getState().length).to.equal(0);

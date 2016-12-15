@@ -10,7 +10,6 @@ export default function (state = [], action) {
         {
           id: getUUID(),
           name: action.name,
-          specie: action.specie
         }
       ];
     case 'CLEAR_PUSSIES':
