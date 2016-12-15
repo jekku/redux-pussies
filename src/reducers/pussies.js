@@ -1,5 +1,3 @@
-'use strict';
-
 import { v4 as getUUID } from 'node-uuid';
 
 export default function (state = [], action) {
@@ -16,7 +14,7 @@ export default function (state = [], action) {
     case 'CLEAR_PUSSIES':
       return [];
     case 'DELETE_PUSSY':
-      return state.filter(p => p.id != action.id);
+      return state.filter(p => p.id !== action.id);
     default:
       return state;
   }
