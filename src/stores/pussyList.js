@@ -1,8 +1,6 @@
 'use strict';
 
 import { createStore } from 'redux';
-import {default as pussies} from 'reducers/pussies';
+import {default as pussies} from './../reducers/pussies';
 
-const pussyList = createStore(pussies);
-
-export default pussyList;
+export const pussyList = createStore(pussies);

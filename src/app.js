@@ -1,11 +1,12 @@
-'use strict';
+import React, { Component } from 'react';
 
-import { default as pussyList } from 'stores/pussyList';
-import { addPussy, clearPussies } from 'actions/pussyListActions';
+class App extends Component {
+  render () {
+    return (
+      <h1> HELLO WORLD </h1>
+    );
+  }
+};
 
-pussyList.dispatch(addPussy('Fluffykins'));
-pussyList.dispatch(addPussy('Shie-Shie'));
-console.log(pussyList.getState());
-pussyList.dispatch(clearPussies());
-console.log(pussyList.getState());
+export default App;
 

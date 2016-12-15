@@ -2,6 +2,10 @@
 
 import { v4 as getUUID } from 'node-uuid';
 
+function getImage () {
+
+};
+
 export default function (state = [], action) {
   switch (action.type) {
     case 'ADD_PUSSY':
@@ -10,6 +14,7 @@ export default function (state = [], action) {
         {
           id: getUUID(),
           name: action.name,
+          photoUrl: 'http://lorempixel.com/640/480/cats/'
         }
       ];
     case 'CLEAR_PUSSIES':

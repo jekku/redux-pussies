@@ -1,8 +1,7 @@
 'use strict';
 
-import { default as pussyList } from 'stores/pussyList';
-import { addPussy, clearPussies, deletePussy } from 'actions/pussyListActions';
-import { expect } from 'chai';
+import { pussyList } from './../../stores/pussyList';
+import { addPussy, clearPussies, deletePussy } from './../../actions/pussyListActions';
 
 describe('Pussy List', () => {
   beforeEach(() => {
@@ -18,8 +17,8 @@ describe('Pussy List', () => {
     pussyList.dispatch(addPussy('Jekri'));
 
     const currentState = pussyList.getState();
-    expect(currentState[currentState.length - 1].name).to.equal('Jekri');
-    expect(currentState[currentState.length - 1].id).to.exist;
+    expect(currentState[currentState.length - 1].name).toBe('Jekri');
+    expect(currentState[currentState.length - 1].id).toBeDefined();
 
     done();
   });
@@ -27,7 +26,7 @@ describe('Pussy List', () => {
   it('Should be able to delete all pussies', (done) => {
     pussyList.dispatch(clearPussies());
 
-    expect(pussyList.getState().length).to.equal(0);
+    expect(pussyList.getState().length).toBe(0);
 
     done();
   });
@@ -41,7 +40,7 @@ describe('Pussy List', () => {
     const nextState = pussyList.getState();
     const stillHasPussy = !!nextState.find(p => p === pussyToDelete);
 
-    expect(stillHasPussy).to.be.false;
+    expect(stillHasPussy).toBe(false);
 
     done();
   });
