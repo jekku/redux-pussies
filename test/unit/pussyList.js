@@ -30,5 +30,5 @@ describe('Pussy List', () => {
     done();
   });
 
-  it('Should be able to delete a pussy by UUID');
+  it('Should be able to delete a pussy from the list by UUID');
 });
