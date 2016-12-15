@@ -2,10 +2,6 @@
 
 import { v4 as getUUID } from 'node-uuid';
 
-function getImage () {
-
-};
-
 export default function (state = [], action) {
   switch (action.type) {
     case 'ADD_PUSSY':
