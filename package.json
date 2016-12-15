@@ -1,0 +1,27 @@
+{
+  "name": "redux-pussies",
+  "version": "1.0.0",
+  "description": "Cats! Cats!",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "npm run compile && mocha --recursive --compilers js:babel-register test/",
+    "compile": "babel -r babel-polyfill src/ --out-dir dist/",
+    "start-dev": "npm run compile && node dist/app.js"
+  },
+  "author": "Jekri Orlina",
+  "license": "MIT",
+  "dependencies": {
+    "node-uuid": "^1.4.7",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-loader": "^6.2.9",
+    "babel-plugin-resolver": "^1.1.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
